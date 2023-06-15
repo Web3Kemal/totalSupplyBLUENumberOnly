@@ -2,7 +2,7 @@ const axios = require("axios");
 
 module.exports = async (req, res) => {
   try {
-    const initialSupply = await getTotalSupply();
+    const initialSupply = await getInitialSupply();
     const burnedSupply = await getBurnedSupply();
     const totalSupply = initialSupply - burnedSupply;
     const totalSupplyNumber = Number(totalSupply) / 10**18; // Assume 18 decimal places
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
   }
 };
 
-async function getinitialSupply() {
+async function getInitialSupply() {
   const response = await axios.get(
     "https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=0x3a36dc12efaa14a3f692b94f97450594459661b6&apikey=929FQNKF895HQGVBAZBM4J5M9X7T73N8BN"
   );
